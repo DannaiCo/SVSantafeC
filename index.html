@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cuenta regresiva San Valentín</title>
+    <style>
+        @font-face {
+            font-family: 'Eminor Bold';
+            src: url('Eminor-Bold.ttf') format('truetype'); /* Asegúrate de que el archivo esté en la misma carpeta */
+        }
+
+        body {
+            margin: 0;
+            width: 100vw;
+            height: 100vh;
+            background: url('fondo.jpg') no-repeat center center fixed;
+            background-size: cover;
+            position: relative;
+        }
+
+        #countdown {
+            font-family: 'Eminor Bold', sans-serif;
+			font-weight: Bold;
+            font-size: 10vw;
+            color: #63323d;
+            position: absolute; /* Permite moverlo libremente */
+            top: 295px;  /* Ajusta según necesidad */
+            left: 1025px; /* Ajusta según necesidad */
+        }
+    </style>
+</head>
+<body>
+    <div id="countdown"></div>
+
+    <script>
+        function actualizarCuentaRegresiva() {
+            const fechaSanValentin = new Date(new Date().getFullYear(), 1, 14); // 14 de febrero
+            const hoy = new Date();
+            const diferenciaTiempo = fechaSanValentin - hoy;
+            const diasRestantes = Math.ceil(diferenciaTiempo / (1000 * 60 * 60 * 24));
+            
+            document.getElementById('countdown').textContent = diasRestantes;
+        }
+
+        actualizarCuentaRegresiva();
+        setInterval(actualizarCuentaRegresiva, 86400000); // Actualiza cada 24 horas
+    </script>
+</body>
+</html>
